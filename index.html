@@ -130,71 +130,151 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
   transition: var(--t);
 }
 
-/* HERO */
+/* HERO REDESIGN - PREMIUM FUTURISTIC */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh; 
   display: flex; align-items: center; justify-content: center;
-  padding: 120px 6% 80px;
+  padding: 80px 6% 40px;
   text-align: center; position: relative;
+  overflow: hidden;
 }
-.hero-content { max-width: 900px; }
+
+.hero-content { 
+  max-width: 1000px; 
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero-greeting {
   font-family: 'Orbitron', sans-serif;
-  color: var(--accent); font-size: 14px;
-  letter-spacing: 4px; margin-bottom: 16px;
+  color: var(--accent); font-size: 13px;
+  letter-spacing: 6px; margin-bottom: 24px;
+  text-transform: uppercase;
+  opacity: 0.8;
 }
+
 .hero-name {
   font-family: 'Orbitron', sans-serif; font-weight: 900;
-  font-size: clamp(48px, 9vw, 110px);
-  line-height: 1; letter-spacing: -2px;
-  margin-bottom: 18px;
+  font-size: clamp(45px, 10vw, 100px);
+  line-height: 1; letter-spacing: -3px;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #00e5ff, #7c4dff, #ff3ea5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px rgba(124, 77, 255, 0.4));
 }
-.gradient-text {
-  background: var(--gradient);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
+
 .hero-typed {
   font-family: 'Orbitron', sans-serif; font-weight: 500;
-  font-size: clamp(18px, 3vw, 28px);
-  color: var(--text-dim); margin-bottom: 24px;
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: var(--text-dim); margin-bottom: 32px;
   min-height: 1.4em;
+  letter-spacing: 2px;
 }
-.cursor { color: var(--accent); animation: blink 1s steps(2) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+
 .hero-desc {
-  max-width: 620px; margin: 0 auto 36px;
+  max-width: 600px; margin: 0 auto 48px;
   color: var(--text-dim); font-size: 17px;
+  line-height: 1.8;
+  opacity: 0.9;
 }
-.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-.btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 28px; border-radius: 999px;
-  font-weight: 600; font-size: 15px;
-  transition: var(--t);
+/* FIXED TECH LIST - PREMIUM & STABLE */
+.hero-tech-list {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 900px;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
-.btn-primary {
-  background: var(--gradient); color: #fff;
-  box-shadow: 0 10px 30px -10px rgba(124, 77, 255, .6);
-}
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -10px rgba(124, 77, 255, .8); }
-.btn-ghost {
-  border: 1px solid var(--border); color: var(--foreground);
-  background: var(--surface); backdrop-filter: blur(10px);
-}
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--glow); }
 
-.scroll-down {
-  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-  width: 26px; height: 42px; border: 2px solid var(--text-dim);
-  border-radius: 14px; display: block;
+.hero-tech-list span {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(154, 163, 189, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: default;
+  position: relative;
 }
-.scroll-down span {
-  display: block; width: 4px; height: 8px; background: var(--accent);
-  border-radius: 4px; margin: 6px auto 0;
-  animation: scrolld 1.5s ease-in-out infinite;
+
+.hero-tech-list span:not(.sep):hover {
+  color: var(--accent);
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+  transform: translateY(-3px);
+  opacity: 1;
 }
-@keyframes scrolld { 0%,100%{transform:translateY(0);opacity:1;} 50%{transform:translateY(14px);opacity:0;} }
+
+.hero-tech-list .sep {
+  color: var(--accent-2);
+  opacity: 0.3;
+  margin: 0 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero-tech-list {
+    gap: 8px;
+    margin-top: 50px;
+  }
+  .hero-tech-list span {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  .hero-tech-list .sep {
+    margin: 0 4px;
+  }
+}
+
+/* PREMIUM SINGLE BUTTON */
+.hero-buttons { display: flex; justify-content: center; width: 100%; }
+
+.btn-premium {
+  padding: 20px 48px; 
+  border-radius: 14px;
+  font-weight: 800; font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: rgba(124, 77, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(124, 77, 255, 0.3);
+  box-shadow: 0 0 20px rgba(124, 77, 255, 0.2), inset 0 0 10px rgba(124, 77, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-premium::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover { 
+  transform: translateY(-8px); 
+  background: rgba(124, 77, 255, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.4), 0 0 20px rgba(124, 77, 255, 0.4);
+  color: var(--accent);
+}
 
 /* SECTIONS */
 .section { padding: 120px 6%; position: relative; }
@@ -223,18 +303,21 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
   0%,100% { box-shadow: 0 0 30px rgba(0,229,255,.4); }
   50% { box-shadow: 0 0 60px rgba(124,77,255,.7); }
 }
-.about-stats { display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
+.about-stats { display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
 .stat {
-  padding: 20px 24px; border-radius: var(--radius);
+  padding: 18px 22px; border-radius: var(--radius);
   background: var(--surface); border: 1px solid var(--border);
-  backdrop-filter: blur(10px); min-width: 110px;
+  backdrop-filter: blur(10px); min-width: 220px; flex: 1;
+  transition: var(--t);
 }
+.stat:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: var(--glow); }
 .stat h3 {
-  font-family: 'Orbitron', sans-serif; font-size: 26px;
+  font-family: 'Orbitron', sans-serif; font-size: 18px;
   background: var(--gradient);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 8px;
 }
-.stat p { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+.stat p { color: var(--text-dim); font-size: 13px; line-height: 1.4; }
 
 .skills-grid {
   display: grid; gap: 18px; margin-top: 40px;
@@ -398,7 +481,7 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
         <li><a href="#home" class="active">Início</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
-        <li id="navProjetos" hidden><a href="#projetos">Projetos</a></li>
+        <li id="navProjetos" hidden><a href="#projects">Projetos</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
@@ -409,18 +492,33 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
 
   <section id="home" class="hero">
     <div class="hero-content reveal">
-      <p class="hero-greeting">// Olá, eu sou</p>
+      <p class="hero-greeting">// Engenheiro de Software & Inovação</p>
       <h1 class="hero-name">Wendell <span class="gradient-text">Dev</span></h1>
       <h2 class="hero-typed"><span id="typed"></span><span class="cursor">|</span></h2>
       <p class="hero-desc">
-        Desenvolvedor Full Stack apaixonado por construir sistemas modernos,
-        automações inteligentes e soluções com IA.
+        Desenvolvedor Full Stack especializado em sistemas modernos, 
+        arquiteturas escaláveis e integração de inteligência artificial.
       </p>
       <div class="hero-buttons">
-        <a href="#contato" class="btn btn-ghost"><i class="fa-solid fa-paper-plane"></i> Contato</a>
+        <a href="#projects" class="btn-premium">Ver Projetos</a>
+      </div>
+      
+      <div class="hero-tech-list">
+        <span>React</span>
+        <span class="sep">•</span>
+        <span>Next.js</span>
+        <span class="sep">•</span>
+        <span>Node.js</span>
+        <span class="sep">•</span>
+        <span>TypeScript</span>
+        <span class="sep">•</span>
+        <span>Python</span>
+        <span class="sep">•</span>
+        <span>IA</span>
+        <span class="sep">•</span>
+        <span>Supabase</span>
       </div>
     </div>
-    <a href="#sobre" class="scroll-down" aria-label="Rolar"><span></span></a>
   </section>
 
   <section id="sobre" class="section">
@@ -443,9 +541,18 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
           combinando performance, design e código limpo.
         </p>
         <div class="about-stats">
-          <div class="stat"><h3>+15</h3><p>Tecnologias</p></div>
-          <div class="stat"><h3>24/7</h3><p>Aprendizado</p></div>
-          <div class="stat"><h3>100%</h3><p>Dedicação</p></div>
+          <div class="stat">
+            <h3>🎓 Engenharia de Software</h3>
+            <p>ICEV – Instituto de Ensino Superior</p>
+          </div>
+          <div class="stat">
+            <h3>💻 Full Stack Developer</h3>
+            <p>Front-end, Back-end & Automação</p>
+          </div>
+          <div class="stat">
+            <h3>🚀 IA & Tecnologia</h3>
+            <p>Inteligência Artificial e Sistemas Modernos</p>
+          </div>
         </div>
       </div>
     </div>
@@ -459,7 +566,7 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
     </div>
   </section>
 
-  <section id="projetos" class="section" hidden>
+  <section id="projects" class="section" hidden>
     <div class="container">
       <h2 class="section-title reveal"><span>03.</span> Projetos</h2>
       <div class="projects-grid" id="projectsGrid"></div>
@@ -474,27 +581,41 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
       </p>
       <div class="contact-buttons">
         <div class="contact-card-wrapper">
-          <a class="contact-card" href="wendellmatiasmaia2023@gmail.com">
+          <a class="contact-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=wendellmatiasmaia2023@gmail.com" target="_blank" rel="noopener noreferrer">
             <i class="fa-solid fa-envelope"></i>
             <span>Email</span>
             <small>wendellmatiasmaia2023@gmail.com</small>
           </a>
-          <button class="copy-btn" onclick="copyEmail()" title="Copiar email">
+          <button class="copy-btn" onclick="copyToClipboard('wendellmatiasmaia2023@gmail.com', this)" title="Copiar email">
             <i class="fa-regular fa-copy"></i>
           </button>
         </div>
-        <a class="contact-card" href="https://github.com/mendell10" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-github"></i><span>GitHub</span>
-        </a>
-        <a class="contact-card" href="https://www.linkedin.com/in/wendell-matias-maia-71801033a/?locale=pt-BR" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-linkedin"></i><span>LinkedIn</span>
-        </a>
+        <div class="contact-card-wrapper">
+          <a class="contact-card" href="https://github.com/mendell10" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+            <small>github.com/mendell10</small>
+          </a>
+          <button class="copy-btn" onclick="copyToClipboard('https://github.com/mendell10', this)" title="Copiar GitHub">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+        <div class="contact-card-wrapper">
+          <a class="contact-card" href="https://www.linkedin.com/in/wendell-matias-maia-71801033a/?locale=pt-BR" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn</span>
+            <small>linkedin.com/in/wendell-matias-maia</small>
+          </a>
+          <button class="copy-btn" onclick="copyToClipboard('https://www.linkedin.com/in/wendell-matias-maia-71801033a/', this)" title="Copiar LinkedIn">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <p>© <span id="year"></span> — Construído com <i class="fa-solid fa-heart"></i> e muito código.</p>
+    <p>© wendellmatiasmaia  <span id="year"></span> —                                  Disponível para oportunidades.</p>
   </footer>
 
 <script>
@@ -520,7 +641,13 @@ const skills = [
   { name: "Docker", icon: "fa-brands fa-docker" },
 ];
 // Adicione projetos aqui e a seção aparecerá automaticamente
-const projects = [];
+const projects = [
+  { 
+    title: "Sistema de Gestão Inteligente", 
+    desc: "Plataforma Full Stack com integração de IA para automação de processos.",
+    link: "https://github.com/mendell10" 
+  }
+];
 
 const phrases = [
   "Full Stack Developer",
@@ -546,7 +673,7 @@ skills.forEach(s => {
 
 // ===== RENDER PROJECTS =====
 if (projects.length > 0) {
-  document.getElementById('projetos').hidden = false;
+  document.getElementById('projects').hidden = false;
   document.getElementById('navProjetos').hidden = false;
   const pg = document.getElementById('projectsGrid');
   projects.forEach(p => {
@@ -573,7 +700,7 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 
 // ===== NAVBAR SCROLL + SPY =====
 const navbar = document.getElementById('navbar');
-const sections = ['home','sobre','habilidades','projetos','contato'];
+const sections = ['home','sobre','habilidades','projects','contato'];
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 30);
   const y = window.scrollY + 120;
@@ -647,17 +774,16 @@ window.addEventListener('resize', resize);
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ===== COPY EMAIL =====
-function copyEmail() {
-  const email = 'wendellmatiasmaia2023@gmail.com';
-  navigator.clipboard.writeText(email).then(() => {
-    const btn = document.querySelector('.copy-btn');
+// ===== COPY TO CLIPBOARD =====
+function copyToClipboard(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
     const icon = btn.querySelector('i');
+    const originalClass = icon.className;
     icon.className = 'fa-solid fa-check';
     btn.style.color = 'var(--accent)';
     setTimeout(() => {
-      icon.className = 'fa-regular fa-copy';
-      btn.style.color = 'var(--text-dim)';
+      icon.className = originalClass;
+      btn.style.color = '';
     }, 2000);
   });
 }
