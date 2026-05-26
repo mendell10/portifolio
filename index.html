@@ -302,6 +302,41 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
   transform: scale(1.2);
 }
 
+/* EMAIL COPY BUTTON */
+.contact-card-wrapper {
+  position: relative;
+}
+.contact-card small {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 5px;
+  word-break: break-all;
+  max-width: 200px;
+}
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-dim);
+  transition: var(--t);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(0, 229, 255, 0.1);
+  transform: scale(1.05);
+}
+.copy-btn i { font-size: 14px !important; }
+
 .footer {
   padding: 40px 6%; text-align: center;
   color: var(--text-dim); font-size: 14px;
@@ -438,9 +473,16 @@ button { font: inherit; cursor: pointer; border: 0; background: transparent; col
         Aberto a oportunidades, projetos e parcerias. Entre em contato:
       </p>
       <div class="contact-buttons">
-        <a class="contact-card" href="mailto:wendellmatiasmaia2023@gmail.com">
-          <i class="fa-solid fa-envelope"></i><span>Email</span>
-        </a>
+        <div class="contact-card-wrapper">
+          <a class="contact-card" href="mailto:wendellmatiasmaia2023@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email</span>
+            <small>wendellmatiasmaia2023@gmail.com</small>
+          </a>
+          <button class="copy-btn" onclick="copyEmail()" title="Copiar email">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
         <a class="contact-card" href="https://github.com/mendell10" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-github"></i><span>GitHub</span>
         </a>
@@ -604,6 +646,21 @@ resize(); animate();
 window.addEventListener('resize', resize);
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== COPY EMAIL =====
+function copyEmail() {
+  const email = 'wendellmatiasmaia2023@gmail.com';
+  navigator.clipboard.writeText(email).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const icon = btn.querySelector('i');
+    icon.className = 'fa-solid fa-check';
+    btn.style.color = 'var(--accent)';
+    setTimeout(() => {
+      icon.className = 'fa-regular fa-copy';
+      btn.style.color = 'var(--text-dim)';
+    }, 2000);
+  });
+}
 </script>
 </body>
 </html>
