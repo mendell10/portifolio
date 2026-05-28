@@ -771,7 +771,7 @@ async function fetchGitHubProjects() {
       projectsGrid.innerHTML = ''; 
 
       allProjects.forEach(repo => {
-        if (repo.fork || repo.name.toLowerCase() === 'portifolio' || repo.name === username) return;
+        if (repo.fork || repo.name.toLowerCase() === 'portifolio' || repo.name.toLowerCase() === 'portifolio-main' || repo.name === username) return;
 
         // Custom redirect for specific projects
         if (repo.name.toLowerCase() === 'sales-pro') {
